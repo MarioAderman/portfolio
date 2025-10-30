@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a simple, single-page HTML portfolio website designed to showcase AI-assisted projects for a Block Builder Fellowship application. The entire portfolio is self-contained in `layout.html` with embedded CSS and JavaScript.
+This is a modern React-based portfolio website built with Vite and Tailwind CSS, designed to showcase AI-assisted projects for a Block Builder Fellowship application.
 
 ## Purpose
 
@@ -14,57 +14,102 @@ This portfolio is specifically built to demonstrate:
 - Rapid prototyping and shipping mindset
 - Technical work samples for the Block Builder Fellowship, Engineering role
 
-See `DESCRIPTION.md` for the full fellowship program details and requirements.
+See `.claude/DESCRIPTION.md` for the full fellowship program details and requirements.
+
+## Tech Stack
+
+- **React 19** - UI framework
+- **Vite 6** - Build tool and dev server
+- **Tailwind CSS v4** - Styling with `@tailwindcss/vite` plugin
+- **ES Modules** - Modern JavaScript module system
 
 ## Architecture
 
-**Single-file Structure**: The entire portfolio is in `layout.html`:
-- Embedded `<style>` block (lines 7-334): All CSS including responsive design, animations, and color variables
-- HTML structure (lines 336-451): Hero section, projects grid, and footer
-- Embedded `<script>` block (lines 453-483): Intersection Observer for scroll animations and parallax effects
+**Component-based Structure**:
+```
+src/
+├── components/
+│   ├── Hero/Hero.jsx           - Hero section with parallax effect
+│   ├── Projects/
+│   │   ├── Projects.jsx        - Projects grid with scroll animations
+│   │   └── ProjectCard.jsx     - Individual project card
+│   ├── Footer/Footer.jsx       - Footer component
+│   └── ScrollIndicator/        - Animated scroll indicator
+├── data/projects.js            - Project data (customize this!)
+├── App.jsx                     - Main app component
+├── index.jsx                   - React entry point
+└── index.css                   - Tailwind imports + custom styles
+```
 
-**Key Sections**:
-- **Hero Section**: Profile introduction with gradient background and scroll indicator
-- **Projects Grid**: 6 project cards with unique gradient backgrounds, designed to be customized with real project details
-- **Footer**: Copyright and attribution
+**Key Features**:
+- **Parallax scrolling** in Hero component
+- **Intersection Observer** for staggered project card animations
+- **Responsive design** with Tailwind breakpoints
+- **Custom gradients** for each project card
 
 ## Development Workflow
 
-**Viewing the Portfolio**:
+**Install dependencies**:
 ```bash
-# Option 1: Open directly in browser (from WSL2)
-explorer.exe layout.html
-
-# Option 2: Start local server
-python3 -m http.server 8000
-# Then visit: http://localhost:8000/layout.html
+npm install
 ```
 
-**Making Changes**:
-- All edits happen in the single `layout.html` file
-- CSS variables are defined in `:root` (lines 14-23) for easy theme customization
-- Project cards start at line 355 and follow a repeating structure
+**Start dev server**:
+```bash
+npm run dev
+```
+Visit `http://localhost:5173`
+
+**Build for production**:
+```bash
+npm run build
+```
+
+**Preview production build**:
+```bash
+npm run preview
+```
 
 ## Customization Points
 
 When personalizing this portfolio:
 
-1. **Hero Section** (lines 339-346): Replace placeholder name and bio with applicant's information
-2. **Project Cards** (lines 355-443): Each card needs:
-   - Project title and description
-   - Links to live demos, GitHub repos, or documentation
+1. **Hero Section** (`src/components/Hero/Hero.jsx`):
+   - Replace placeholder name and bio
+   - Update profile image/emoji
+
+2. **Projects Data** (`src/data/projects.js`):
+   - Replace all 6 placeholder projects with real projects
+   - Update titles, descriptions, gradients, and links
    - Consider highlighting which AI tools were used
-3. **Profile Image** (line 340): Replace emoji with actual image if desired
-4. **Color Scheme**: Modify CSS variables in `:root` for brand consistency
-5. **Footer** (lines 448-451): Update copyright name
+
+3. **Footer** (`src/components/Footer/Footer.jsx`):
+   - Update copyright name
+   - Add social links if desired
+
+4. **Styling** (`src/index.css`):
+   - Tailwind v4 uses `@import "tailwindcss"` (no config file needed for basic setup)
+   - Add custom CSS below the import if needed
+   - Colors are inline via Tailwind classes
 
 ## Design System
 
-- **Primary Colors**: Dark theme with blue accent (`#0071e3`)
-- **Typography**: SF Pro Display fallback stack (Apple-style)
-- **Responsive**: Mobile-first with breakpoints at 768px and 480px
-- **Animations**: Staggered fade-in for project cards, parallax hero effect
-- **Project Card Gradients**: Each card (nth-child) has a unique gradient (lines 150-168)
+- **Colors**: Dark theme (#000 bg) with blue accent (#0071e3)
+- **Typography**: System font stack (SF Pro Display on Apple devices)
+- **Responsive**: Mobile-first, handled by Tailwind
+- **Animations**:
+  - Fade-in-up for hero
+  - Staggered fade-in for project cards
+  - Bounce animation for scroll indicator
+  - Parallax effect on hero content
+
+## Tailwind CSS v4 Notes
+
+This project uses the latest Tailwind v4 with the `@tailwindcss/vite` plugin:
+- No separate `tailwind.config.js` or `postcss.config.js` needed
+- Just `@import "tailwindcss"` in CSS file
+- Theme customization done via CSS custom properties if needed
+- Cleaner, simpler setup compared to v3
 
 ## Fellowship Context
 
@@ -75,3 +120,7 @@ The target role emphasizes:
 - Active participation in AI builder communities
 
 Portfolio should showcase evidence of: shipped projects, AI tool usage, builder mindset, and hands-on engineering fluency.
+
+## Legacy Files
+
+- `layout.html` - Original single-file HTML portfolio (kept for reference)
