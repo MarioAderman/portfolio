@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - AI Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse at top, rgba(0, 113, 227, 0.15) 0%, transparent 60%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #5e5ce6);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 113, 227, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 80px rgba(0, 113, 227, 0.4);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(4) .project-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .project-card:nth-child(5) .project-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .project-card:nth-child(6) .project-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .project-image::after {
+            content: '🖼️';
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-link.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-link.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 1.5rem;
+            }
+
+            .projects {
+                padding: 4rem 1.5rem;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                justify-content: center;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        footer p:first-child {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image">👤</div>
+            <h1>Lorem Ipsum Dolor</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <h2 class="section-title">Major Projects</h2>
+        <div class="projects-grid">
+            <!-- Project Card 1 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Alpha</h3>
+                    <p class="project-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">GitHub →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Beta</h3>
+                    <p class="project-description">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">Learn More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Gamma</h3>
+                    <p class="project-description">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">Case Study →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 4 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Delta</h3>
+                    <p class="project-description">
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">Documentation →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 5 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Epsilon</h3>
+                    <p class="project-description">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">Video →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 6 -->
+            <article class="project-card">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Zeta</h3>
+                    <p class="project-description">
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Demo →</a>
+                        <a href="#" class="project-link secondary">Twitter Thread →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lorem Ipsum. All rights reserved.</p>
+        <p>Built with AI-assisted tools</p>
+    </footer>
+
+    <script>
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            hero.style.opacity = 1 - scrolled / 500;
+        });
+    </script>
+</body>
+</html>
