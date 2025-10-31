@@ -25,3 +25,6 @@ dist-ssr
 
 # Legacy files
 layout.html
+
+# Assets (binary files)
+src/assets/*
