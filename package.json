@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "homepage": "https://marioaderman.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mario Aderman",
   "license": "ISC",
-  "description": "",
+  "description": "AI-native builder portfolio showcasing AI-assisted projects",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
     "@vitejs/plugin-react": "^4.7.0",
@@ -21,6 +24,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16"
   }

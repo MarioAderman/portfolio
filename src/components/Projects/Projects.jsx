@@ -28,12 +28,19 @@ export default function Projects() {
   }, [])
 
   return (
-    <section className="py-24 px-8 max-w-7xl mx-auto">
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 tracking-tight">
-        Major Projects
-      </h2>
+    <section className="py-24 relative bg-black">
+      {/* Background gradients matching Hero */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,113,227,0.1)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.08)_0%,transparent_40%),radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.08)_0%,transparent_40%)]" />
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 tracking-tight">
+          Major Projects
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <div
             key={project.id}
@@ -49,6 +56,7 @@ export default function Projects() {
             <ProjectCard project={project} />
           </div>
         ))}
+        </div>
       </div>
     </section>
   )
