@@ -41,9 +41,8 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-[#a1a1a6] leading-relaxed max-w-2xl mx-auto">
-          I'm a AI Engineer in the making, looking to breaking into tech.
-          I contribute to open-source projects of topics I'm really into to gain real-world experience
-          while learning teamwork and state-of-the-art technologies.
+          Aspiring AI Engineer building real projects and contributing to open source.
+          I learn best by shipping code and collaborating with others on meaningful problems.
         </p>
 
         {/* Social Links */}
