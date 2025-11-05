@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ScrollIndicator from '../ScrollIndicator/ScrollIndicator'
+import profileImage from '../../assets/profile_2.JPG'
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0)
@@ -31,7 +32,7 @@ export default function Hero() {
       >
         {/* Profile Image */}
         <div className="w-56 h-64 rounded-[50%] bg-gradient-to-br from-[#0071e3] to-[#5e5ce6] mx-auto mb-8 flex items-center justify-center shadow-[0_20px_60px_rgba(0,113,227,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_80px_rgba(0,113,227,0.4)] overflow-hidden p-1">
-          <img src="/src/assets/profile_2.JPG" alt="Profile" className="w-full h-full object-cover rounded-[50%]" />
+          <img src={profileImage} alt="Profile" className="w-full h-full object-cover rounded-[50%]" />
         </div>
 
         {/* Title */}
