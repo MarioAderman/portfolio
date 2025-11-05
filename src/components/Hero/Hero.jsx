@@ -27,23 +27,24 @@ export default function Hero() {
       </div>
 
       <div
-        className="max-w-3xl text-center z-10 animate-[fadeInUp_1s_ease-out] pt-8"
+        className="max-w-3xl text-center z-10 animate-[fadeInUp_1s_ease-out]"
         style={parallaxStyle}
       >
         {/* Profile Image */}
-        <div className="w-40 h-48 md:w-56 md:h-64 rounded-[50%] bg-gradient-to-br from-[#0071e3] to-[#5e5ce6] mx-auto mb-6 md:mb-8 flex items-center justify-center shadow-[0_20px_60px_rgba(0,113,227,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_80px_rgba(0,113,227,0.4)] overflow-hidden p-1">
+        <div className="w-56 h-64 rounded-[50%] bg-gradient-to-br from-[#0071e3] to-[#5e5ce6] mx-auto mb-8 flex items-center justify-center shadow-[0_20px_60px_rgba(0,113,227,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_80px_rgba(0,113,227,0.4)] overflow-hidden p-1">
           <img src={profileImage} alt="Profile" className="w-full h-full object-cover rounded-[50%]" />
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 tracking-tight bg-gradient-to-b from-[#f5f5f7] to-[#a1a1a6] bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight bg-gradient-to-b from-[#f5f5f7] to-[#a1a1a6] bg-clip-text text-transparent">
           Mario Aderman
         </h1>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-[#a1a1a6] leading-relaxed max-w-2xl mx-auto">
-          AI Engineer turning ideas into reality with AI-assisted tools. I ship fast, contribute to open source,
-          and build solutions that actually work—powered by Claude Code, DeepWiki, and the broader AI ecosystem.
+        <p className="text-lg md:text-xl text-[#a1a1a6] leading-relaxed max-w-2xl mx-auto">
+          AI-native builder leveraging tools like Claude Code, Cursor, and goose to rapidly prototype and ship.
+          I transform ideas into working demos through AI-assisted development, contributing to open-source projects
+          and building AI-powered solutions that solve real problems.
         </p>
 
         {/* Social Links */}
