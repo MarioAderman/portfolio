@@ -3,7 +3,11 @@ export default function ProjectCard({ project }) {
     <article className="bg-[#1a1a1a] rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] shadow-[0_10px_40px_rgba(0,0,0,0.3)] cursor-pointer flex flex-col h-full">
       {/* Project Image */}
       <div className={`w-full h-64 bg-gradient-to-br ${project.gradient} flex items-center justify-center text-6xl relative overflow-hidden`}>
-        <span className="opacity-30">🖼️</span>
+        {project.image ? (
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        ) : (
+          <span className="opacity-30">🖼️</span>
+        )}
       </div>
 
       {/* Project Content */}
