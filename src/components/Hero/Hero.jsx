@@ -42,9 +42,8 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-[#a1a1a6] leading-relaxed max-w-2xl mx-auto">
-          AI-native builder leveraging tools like Claude Code, Cursor, and goose to rapidly prototype and ship.
-          I transform ideas into working demos through AI-assisted development, contributing to open-source projects
-          and building AI-powered solutions that solve real problems.
+          AI Engineer turning ideas into reality with AI-assisted tools. I ship fast, contribute to open source,
+          and build solutions that actually work—powered by Claude Code, DeepWiki, and the broader AI ecosystem.
         </p>
 
         {/* Social Links */}
