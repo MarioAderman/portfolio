@@ -1,4 +1,4 @@
-import deepCriticalImg from '../assets/DeepCritical.jpeg'
+import deepCriticalImg from '../assets/DeepCritical.png'
 import inventoryImg from '../assets/Inventory.png'
 import bullImg from '../assets/Bull.jpg'
 import cashyImg from '../assets/Cashy.webp'
